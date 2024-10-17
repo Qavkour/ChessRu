@@ -1,8 +1,6 @@
 var board,
   game = new Chess();
 
-/*The "AI" part starts here */
-
 var minimaxRoot = function (depth, game, isMaximisingPlayer) {
   var newGameMoves = game.ugly_moves();
   var bestMove = -9999;
@@ -175,8 +173,6 @@ var getPieceValue = function (piece, x, y) {
   return piece.color === "w" ? absoluteValue : -absoluteValue;
 };
 
-/* board visualization and games state handling */
-
 var onDragStart = function (source, piece, position, orientation) {
   if (
     game.in_checkmate() === true ||
@@ -286,6 +282,16 @@ var greySquare = function (square) {
 
   squareEl.css("background", background);
 };
+
+var resetGame = function () {
+  game.reset();
+  board.position("start");
+  $("#move-history").empty();
+};
+
+$("#reset-button").on("click", function () {
+  resetGame();
+});
 
 var cfg = {
   draggable: true,
