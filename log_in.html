@@ -11,26 +11,24 @@
     <link rel="stylesheet" href="styles/style_log_in.css" />
   </head>
   <body>
-    <div class="header">
-      <div class="nav">
-        <a href="index.html"
-          ><img
-            src="img/chesspieces/wikipedia/ChessLogo.png"
-            alt="ChessRu"
-            id="logoChessRu"
-        /></a>
-      </div>
-      <div class="nav logreg">
-        <a href="rools.html">Как играть?</a>
-      </div>
-      <div class="nav logreg">
-        <a href="log_in.html">Войти</a>
-      </div>
-      <div class="nav logreg">
-        <a href="registration.html">Зарегистрироваться</a>
+    <div class="container">
+      <div class="form-container">
+        <h2>Вход</h2>
+        <form action="#" method="POST">
+          <div class="input-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="input-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <button type="submit" class="btn">Войти</button>
+          <p class="register-link">
+            Нет аккаунта? <a href="registration.html">Зарегистрироваться</a>
+          </p>
+        </form>
       </div>
     </div>
-    <!-- Нижняя информация -->
-    <div class="footer">© 2024 ChessRu. Все права защищены.</div>
   </body>
 </html>
