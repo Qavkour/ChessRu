@@ -183,20 +183,30 @@ var onDragStart = function (source, piece, position, orientation) {
   }
 };
 
+// Функция для показа сообщения о победе
+function showWinMessage() {
+  document.getElementById("winMessage").style.display = "block";
+}
+
+// Функция для показа сообщения о проигрыше
+function showLoseMessage() {
+  document.getElementById("loseMessage").style.display = "block";
+}
+
 var makeBestMove = function () {
   var bestMove = getBestMove(game);
   game.ugly_move(bestMove);
   board.position(game.fen());
   renderMoveHistory(game.history());
   if (game.game_over()) {
-    alert("Game over");
+    showLoseMessage();
   }
 };
 
 var positionCount;
 var getBestMove = function (game) {
   if (game.game_over()) {
-    alert("Game over");
+    showWinMessage();
   }
 
   positionCount = 0;
@@ -287,6 +297,8 @@ var resetGame = function () {
   game.reset();
   board.position("start");
   $("#move-history").empty();
+  document.getElementById("winMessage").style.display = "none";
+  document.getElementById("loseMessage").style.display = "none";
 };
 
 $("#reset-button").on("click", function () {

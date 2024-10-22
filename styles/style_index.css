@@ -1,3 +1,4 @@
+/* Общие стили */
 body {
   font-family: "Helvetica Neue", sans-serif;
   height: 100vh;
@@ -7,7 +8,7 @@ body {
   box-sizing: border-box;
 }
 
-/*Основная часть сайта*/
+/* Основная часть сайта */
 .container {
   display: flex;
   flex-direction: row;
@@ -17,6 +18,7 @@ body {
   padding: 40px;
   position: relative;
   top: 77px;
+  margin: 0 auto;
 }
 
 /* Профиль пользователя */
@@ -83,7 +85,7 @@ h1 {
   color: #333;
 }
 
-/*Кнопки */
+/* Кнопки */
 .buttons {
   display: flex;
   gap: 30px;
@@ -130,7 +132,7 @@ h1 {
   font-size: 16px;
 }
 
-/*Нижняя часть страницы*/
+/* Нижняя часть страницы */
 .footer {
   text-align: center;
   bottom: 20px;
@@ -140,7 +142,7 @@ h1 {
   top: 77px;
 }
 
-/*Верхняя часть страницы*/
+/* Верхняя часть страницы */
 #logoChessRu {
   width: 120px;
   height: 57px;
@@ -175,4 +177,61 @@ h1 {
   background-color: #555;
   transform: translateY(-3px);
   color: #ddd;
+}
+
+/* Базовые стили для блоков победы и проигрыша */
+.result {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  padding: 40px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  font-size: 24px;
+  color: white;
+  display: none;
+  z-index: 10;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Стили для блока победы */
+.win {
+  background-color: #4caf50;
+}
+
+/* Стили для блока поражения */
+.lose {
+  background-color: #f44336;
+}
+
+/* Кнопка в блоке победы/поражения */
+.result button {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-top: 20px;
+  background-color: white;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.result button:hover {
+  background-color: #eee;
+}
+
+/* Анимация плавного появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
