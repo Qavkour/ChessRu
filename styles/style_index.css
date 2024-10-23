@@ -1,24 +1,25 @@
-/* Общие стили */
-body {
-  font-family: "Helvetica Neue", sans-serif;
-  height: 100vh;
+/* Основные стили */
+* {
   margin: 0;
-  background-color: #f4f4f9;
-  color: #333;
+  padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  padding-top: 60px; /* для фиксированного header */
 }
 
 /* Основная часть сайта */
 .container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
   padding: 40px;
-  position: relative;
-  top: 77px;
-  margin: 0 auto;
 }
 
 /* Профиль пользователя */
@@ -26,10 +27,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  width: 200px;
-  padding-right: 20px;
-  border-right: 2px solid #ddd;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .profile img {
@@ -58,9 +59,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .board {
@@ -112,9 +110,10 @@ h1 {
 
 /* Секция с последними играми */
 .sidebar {
-  width: 250px;
-  padding-left: 20px;
-  border-left: 2px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .sidebar h2 {
@@ -139,7 +138,7 @@ h1 {
   font-size: 14px;
   color: #777;
   position: relative;
-  top: 77px;
+  top: 5px;
 }
 
 /* Верхняя часть страницы */
@@ -148,35 +147,54 @@ h1 {
   height: 57px;
 }
 
-.header {
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 10px 0;
+  z-index: 1000;
+}
+
+.navbar {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #d3a568;
-  padding: 10px 35px;
-  width: 100%;
-  position: fixed;
-  z-index: 5;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.logreg > a {
-  padding: 15px 40px;
+.logo {
+  color: #fff;
+  font-size: 24px;
   text-decoration: none;
-  font-size: 18px;
-  cursor: pointer;
-  border: none;
-  background-color: #333;
-  color: white;
-  border-radius: 8px;
-  transition: background-color 0.3s, transform 0.3s;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.logreg > a:hover {
-  background-color: #555;
-  transform: translateY(-3px);
-  color: #ddd;
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links li {
+  margin: 0;
+  padding-left: 35px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.nav-links a:hover {
+  color: #7f7f7f;
+}
+
+.nav-links a:active {
+  color: #d7d7d7;
 }
 
 /* Базовые стили для блоков победы и проигрыша */
@@ -193,7 +211,7 @@ h1 {
   font-size: 24px;
   color: white;
   display: none;
-  z-index: 10;
+  z-index: 10000;
   animation: fadeIn 0.5s ease-out;
 }
 
@@ -233,5 +251,29 @@ h1 {
   to {
     opacity: 1;
     transform: translate(-50%, -50%);
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .main-section {
+    order: 2;
+  }
+
+  .profile,
+  .sidebar {
+    order: 1;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
   }
 }
